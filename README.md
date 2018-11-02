@@ -15,6 +15,7 @@ cd ~
 pip3 install paho-mqtt
 pip3 install RPi.GPIO
 cd ./lampa/
+mkdir logs
 sudo cp lampa.sh /etc/init.d
 sudo update-rc.d lampa.sh defaults
 ```
