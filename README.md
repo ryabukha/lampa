@@ -6,7 +6,7 @@ use mqtt server and RPi2
 ```
 sudo wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 sudo apt-key add mosquitto-repo.gpg.key
-rm mosquitto-repo.gpg.key
+rm -f mosquitto-repo.gpg.key
 cd /etc/apt/sources.list.d/
 sudo wget http://repo.mosquitto.org/debian/mosquitto-stretch.list
 sudo apt-get update
@@ -19,6 +19,10 @@ mkdir logs
 sudo cp lampa.sh /etc/init.d
 sudo update-rc.d lampa.sh defaults
 ```
+
+## control...
+sudo /etc/init.d/lampa.sh star/stop/status
+
 ## links:
 
 - [mqtt server install](http://robot-on.ru/articles/ystanovka-mqtt-brokera-mosquitto-raspberry-orange-pi)
