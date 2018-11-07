@@ -138,8 +138,8 @@ class Lampa(mqtt.Client):
         return "led/" + self.name + "/pub"
 
 
-led1 = Lampa(name="lampa1", pin=3, pin_btn = 18)
-led2 = Lampa(name="lampa2", pin=5, pin_btn = 22)
+led1 = Lampa(name="lampa1", pin=3, pin_btn=18)
+led2 = Lampa(name="lampa2", pin=5, pin_btn=22)
 
 rc = led1.run()
 rc2 = led2.run()
