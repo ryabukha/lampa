@@ -20,8 +20,8 @@ install:
   - pip3 install paho-mqtt
   - pip3 install RPi.GPIO
 # command to run tests
-#script:
-#  - lampa
+script:
+  - pytest
 
 notifications:
   slack:
