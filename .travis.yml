@@ -21,7 +21,7 @@ install:
   - pip3 install RPi.GPIO
 # command to run tests
 script:
-  - pytest
+  - pytest.py
 
 notifications:
   slack:
