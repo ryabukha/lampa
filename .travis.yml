@@ -27,3 +27,5 @@ notifications:
   slack:
     on_success: always
     on_failure: always
+  rooms:
+	  - greyhousework:il8ZDnfpuiWyUm8hZo5ajWv3#homework
