@@ -1,0 +1,5 @@
+language: python
+
+notifications:
+  slack:
+    on_success: always
