@@ -40,7 +40,10 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Make a class we can use to capture stdout and sterr in the log
+
+
 class MyLogger(object):
+
         def __init__(self, logger, level):
                 """Needs a logger and a logger level."""
                 self.logger = logger
@@ -52,7 +55,9 @@ class MyLogger(object):
                         self.logger.log(self.level, message.rstrip())
 
 # Replace stdout with logging to file at INFO level
+
 sys.stdout = MyLogger(logger, logging.INFO)
+
 # Replace stderr with logging to file at ERROR level
 sys.stderr = MyLogger(logger, logging.ERROR)
 
@@ -75,7 +80,6 @@ class Lampa(mqtt.Client):
         self.status = False
         GPIO.setup(self.pin_btn, GPIO.IN)
         GPIO.add_event_detect(self.pin_btn, GPIO.RISING, callback=self.ext_button, bouncetime=300)
-
 
     def init(self):
         pass
@@ -100,7 +104,7 @@ class Lampa(mqtt.Client):
                 self.off()
             else:
                 self.on()
-            #client.publish("led/" + self.name + "/sub", int(self.status))
+#            client.publish("led/" + self.name + "/sub", int(self.status))
             sleep(0.1)
 
     def mqtt_on_connect(self, mqttc, obj, flags, rc):
@@ -113,7 +117,7 @@ class Lampa(mqtt.Client):
         print("on_publish mid: " + str(mid))
 
     def mqtt_on_message(self, client, userdata, msg):
-        #print("on_message")
+        # print("on_message")
         try:
             p = msg.payload.decode()
             print(msg.topic)
@@ -153,6 +157,6 @@ try:
         led1._mqttc.loop_start()
         led2._mqttc.loop_start()
 except KeyboardInterrupt:
-    print ("\n\rGoodbye.")
+    print("\n\rGoodbye.")
 finally:  # this block will run no matter how the try block exits
     GPIO.cleanup()  # clean up after yourself
