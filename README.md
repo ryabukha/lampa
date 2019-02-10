@@ -30,3 +30,4 @@ sudo /etc/init.d/lampa.sh star/stop/status
 - [paho python client](https://www.eclipse.org/paho/clients/python/)
 - [getting a python script to run in the background](http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/)
 
+hello slack
