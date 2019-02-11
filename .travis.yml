@@ -21,11 +21,11 @@ install:
   - pip3 install RPi.GPIO
 # command to run tests
 script:
-  - pytest
+  - lampa
 
 notifications:
   slack:
     on_success: always
     on_failure: always
   rooms:
-	  - greyhousework:il8ZDnfpuiWyUm8hZo5ajWv3#homework
+    - greyhousework:il8ZDnfpuiWyUm8hZo5ajWv3#homework
