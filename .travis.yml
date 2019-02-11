@@ -1,13 +1,17 @@
 language: python
 
-python: 3.5
+python: 3.6
 
 before_script:
   - sudo wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
   - sudo apt-key add mosquitto-repo.gpg.key
+  
+  
   - echo "deb https://repo.mosquitto.org/debian stretch main" | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update -qq
   
+
+
 before_install:
   - sudo apt-get -y install python3-pip mosquitto mosquitto-clients
 
@@ -23,5 +27,5 @@ notifications:
   slack:
     on_success: always
     on_failure: always
-    greyhousework:il8ZDnfpuiWyUm8hZo5ajWv3
-
+  rooms:
+	  - greyhousework:il8ZDnfpuiWyUm8hZo5ajWv3#homework
