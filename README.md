@@ -31,3 +31,4 @@ sudo /etc/init.d/lampa.sh star/stop/status
 - [getting a python script to run in the background](http://blog.scphillips.com/posts/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/)
 
 hello slack
+start
