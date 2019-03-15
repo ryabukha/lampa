@@ -1,0 +1,15 @@
+[Unit]
+Description=Lampa led controller
+After=syslog.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/lampa/
+ExecStart=/home/pi/lampa/lampa.py
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
