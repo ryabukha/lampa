@@ -54,17 +54,17 @@ class Lampa(mqtt.Client):
                 self.off()
             else:
                 self.on()
-                #            client.publish("led/" + self.name + "/sub", int(self.status))
             sleep(0.1)
 
     def on_connect(self, mqttc, obj, flags, rc):
-        print("rc: "+str(rc))
+        #print("rc: "+str(rc))
+        pass
 
     def on_message(self, mqttc, obj, msg):
-        print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
+        #print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
         try:
             p = msg.payload.decode()
-            print(msg.topic)
+            #print(msg.topic)
             if int(p) > 0:
                 self.on()
                 mqttc.publish("led/" + self.name + "/sub", p)
