@@ -1,13 +1,14 @@
 #!/usr/bin/python
 
 
-#import context  # Ensures paho is in PYTHONPATH
+# import context  # Ensures paho is in PYTHONPATH
 import paho.mqtt.client as mqtt
 import RPi.GPIO as GPIO
 from time import sleep
 import logger
 
 logger.start_log()
+
 
 class Button:
     def __init__(self, pin_btn=18):
@@ -47,6 +48,12 @@ class Lampa(mqtt.Client):
         self.status = False
         print(self.name + " is off")
 
+    def switch_bt(self):
+        if self.status:
+            self.off()
+        else:
+            self.on()
+
     def ext_button(self, pin_btn):
         if GPIO.input(self.pin_btn):
             print("Button press... detected pin#: " + str(self.pin_btn))
@@ -57,15 +64,18 @@ class Lampa(mqtt.Client):
             sleep(0.1)
 
     def on_connect(self, mqttc, obj, flags, rc):
-        #print("rc: "+str(rc))
+        # print("rc: "+str(rc))
         pass
 
     def on_message(self, mqttc, obj, msg):
-        #print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
+        # print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
         try:
             p = msg.payload.decode()
-            #print(msg.topic)
-            if int(p) > 0:
+            # print(msg.topic)
+            if str(p) == 'switch':
+                self.switch_bt()
+                mqttc.publish("led/" + self.name + "/sub", p)
+            elif int(p) > 0:
                 self.on()
                 mqttc.publish("led/" + self.name + "/sub", p)
             elif int(p) == 0:
@@ -88,7 +98,7 @@ class Lampa(mqtt.Client):
         self.subscribe("led/" + self.name + "/pub", 0)
 
 
-#btn = Button()
+# btn = Button()
 
 items_base = {'1': ['lampa1', 3, 18], '2': ['lampa2', 5, 22]}
 
