@@ -94,7 +94,7 @@ class Lampa(mqtt.Client):
         print(string)
 
     def connect_subscribe(self):
-        self.connect("10.0.0.200", 1883, 60)
+        self.connect("127.0.0.1", 1883, 60)
         self.subscribe("led/" + self.name + "/pub", 0)
 
 
