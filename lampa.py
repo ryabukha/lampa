@@ -36,7 +36,7 @@ class Lampa(mqtt.Client):
         GPIO.add_event_detect(self.pin_btn, GPIO.RISING, self.ext_button, bouncetime=300)
 
     def get_status(self):
-        print(self.status)
+        return self.status
 
     def on(self):
         GPIO.output(self.pin, 1)
@@ -91,7 +91,8 @@ class Lampa(mqtt.Client):
         print("Subscribed: "+str(mid)+" "+str(granted_qos))
 
     def on_log(self, mqttc, obj, level, string):
-        print(string)
+        pass
+        #  print(string)
 
     def connect_subscribe(self):
         self.connect("127.0.0.1", 1883, 60)
@@ -113,7 +114,7 @@ try:
     run = True
     while run:
         for id, data in leds.items():
-            leds[id].loop_start()
+            leds[id].loop(0.1)
 except KeyboardInterrupt:
     print("\n\rGoodbye.")
 finally:  # this block will run no matter how the try block exits
